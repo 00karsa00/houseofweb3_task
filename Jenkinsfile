@@ -15,12 +15,12 @@ pipeline {
 
         stage('Docker Push') {
             steps {
-                withCredentials([usernamePassword(passwordVeriable: 'DOCKERHUB_PASSWORD',usernameVariable: 'DOCKERHUB_USERNAME')]){
-                    bat 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'
+                // withCredentials([usernamePassword(passwordVeriable: '',usernameVariable: 'DOCKERHUB_USERNAME')]){
+                    bat 'docker login -u karsa007 -p Karsa@007'
                     bat 'docker tag my-node-app:1.0 karsa007/my-node-app:1.0'
                     bat 'docker push karsa007/my-node-app:1.0'
                     bat 'docer logout'
-                }
+                // }
             }
         }
     }
