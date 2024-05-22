@@ -26,11 +26,11 @@ jobs:
     # - run: npm run build --if-present
 
     # Build Docker image
-    - name: Build Docker image
-      run: |
-        docker build -t karsa007/my-node-app:latest .
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker push karsa007/my-node-app:latest
+    # - name: Build Docker image
+    #   run: |
+    #     docker build -t karsa007/my-node-app:latest .
+    #     docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+    #     docker push karsa007/my-node-app:latest
 
     # Deploy Docker image to EC2 Docker server
     - name: SSH and deploy Docker image to EC2
@@ -39,8 +39,8 @@ jobs:
         host: ${{ secrets.EC2_HOST }}
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          docker pull karsa007/my-node-app:latest
-          docker stop karsa007/my-node-app || true
-          docker rm karsa007/my-node-app || true
-          docker run -d -p 4001:4001 --name my-node-app karsa007/my-node-app:latest
+        # script: |
+          # docker pull karsa007/my-node-app:latest
+          # docker stop karsa007/my-node-app || true
+          # docker rm karsa007/my-node-app || true
+          # docker run -d -p 4001:4001 --name my-node-app karsa007/my-node-app:latest
