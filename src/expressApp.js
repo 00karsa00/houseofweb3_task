@@ -2,6 +2,8 @@ import express from 'express';
 import userRouter from './api/users.api.js';
 import taskRouter from './api/todoList.api.js';
 import connectToDatabase from './mongoose.js';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './swagger/swagger.js';
 
 const app = express();
 
@@ -10,6 +12,8 @@ connectToDatabase();
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Routes setup
 app.use('/users', userRouter);
