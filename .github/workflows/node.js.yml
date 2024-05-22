@@ -29,7 +29,7 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t karsa007/my-node-app:latest .
-        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker login -u ${{ $DOCKER_USERNAME }} -p ${{ $DOCKER_PASSWORD }}
         docker push karsa007/my-node-app:latest
 
     # Deploy Docker image to EC2 Docker server
