@@ -19,7 +19,7 @@ pipeline {
                     bat 'docker login -u karsa007 -p Karsa@007'
                     bat 'docker tag my-node-app:1.0 karsa007/my-node-app:1.0'
                     bat 'docker push karsa007/my-node-app:1.0'
-                    bat 'docer logout'
+                    bat 'docker logout'
                 // }
             }
         }
