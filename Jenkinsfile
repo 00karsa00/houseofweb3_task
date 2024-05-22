@@ -1,22 +1,10 @@
 pipeline {
     agent any 
     stages{
-        stage("checkout") {
+        stage("Build") {
             steps{
-                checkout scm
+                bat "npm install"
             }
         }
-
-        stage("Test") {
-            steps{
-                sh "npm install"
-            }
-        }
-
-        // stage("Build") {
-        //     steps{
-        //         sh "npm run build"
-        //     }
-        // }
     }
 }
