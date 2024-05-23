@@ -20,8 +20,9 @@ export const addTodoData = async (req, res, next) => {
 export const getAllTodo = async (req, res, next) => {
     try {
         let userId = req.userInfo._id;
-        let { title, status, date } = req.body;
-        let insertRes = await getAllTodoRep({userId, title, status, date});
+        console.log("req.body => ",req.body)
+        let { title, description, priority, date, page, limit } = req.body;
+        let insertRes = await getAllTodoRep({userId,description, title,  priority, date, page,limit });
         res.status(200).json({
             error: false,
             message: `Fetch data successfully.`,
@@ -80,7 +81,7 @@ export const getTodoInfo = async (req, res, next) => {
         let todoInfo = await getTodoRep({_id: id,userId });
         res.status(200).json({
             error: false,
-            message: `Updated Successfully`,
+            message: `fetch data successfully`,
             todoInfo
         });
     } catch (error) {

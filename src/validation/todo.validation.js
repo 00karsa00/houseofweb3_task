@@ -40,3 +40,28 @@ export const todoUpdateValidate = async (req, res, next) => {
     }
 }
 
+export const todoListValidate = async (req, res, next) => {
+    try {
+        const bodySchema = Joi.object({
+            title: Joi.string().optional(),
+            description: Joi.string().optional(),
+            priority: Joi.array().items(Joi.string()).optional(),
+            date: Joi.object({
+                from: Joi.date().iso().required(),
+                to: Joi.date().iso().required()
+            }).optional(),
+            page: Joi.number().integer().optional(),
+            limit: Joi.number().integer().optional(),
+        });
+        const { error } = await bodySchema.validate(req.body);
+        if(error) {
+            return next({status: 400,message: error.details[0].message })
+        }
+        next();
+    } catch (error) {
+        console.log("Error => ", error);
+        console.trace();
+        next({ message: "Internal Error" })
+    }
+}
+

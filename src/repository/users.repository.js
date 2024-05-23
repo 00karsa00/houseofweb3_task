@@ -79,7 +79,7 @@ export const userListRepo = (data) => {
                 }
             }
             if (data.page) {
-                const limit = data.limit || 0
+                const limit = data.limit || 10;
                 pagination.skip = (data.page - 1) * limit;
                 pagination.limit = limit;
             }
