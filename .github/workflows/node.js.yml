@@ -47,7 +47,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          sudo docker pull karsa007/my-node-app:latest
-          sudo docker stop my-node-app || true
-          sudo docker rm my-node-app || true
-          sudo docker run -d -p 4001:4001 --name my-node-app karsa007/my-node-app:latest
+          # sudo docker pull karsa007/my-node-app:latest
+          # sudo docker stop my-node-app || true
+          # sudo docker rm my-node-app || true
+          # sudo docker run -d -p 4001:4001 --name my-node-app karsa007/my-node-app:latest
