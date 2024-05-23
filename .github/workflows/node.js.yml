@@ -44,7 +44,7 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.EC2_HOST }}
-        username: http://3.6.36.74/
+        username: 3.6.36.74
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
           # sudo docker pull karsa007/my-node-app:latest
